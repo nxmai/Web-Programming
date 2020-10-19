@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTCN02 - Javascript Basic</title>
+        <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    </head>
+    <body>
+       <div class="container">
+           <h1>BÉ TẬP TÍNH </h1>
+           <div class="row">
+               <div class="col-md-6">
+                    <label for="fnum">Số thứ nhất:</label><br>
+                    <input type="text" id="fnum" name="fnum"><br>
+               </div>
+               <div class="col-md-6">
+                    <label for="snum">Số thứ hai:</label><br>
+                    <input type="text" id="snum" name="snum"><br>
+               </div>
+           </div>
+           <br>
+           <div class="row">
+               <form>
+                    <input type="radio" id="add" name="calc" value="add">
+                    <label for="add">Cộng</label><br>
+                    <input type="radio" id="sub" name="calc" value="sub">
+                    <label for="sub">Trừ</label><br>
+                    <input type="radio" id="multi" name="calc" value="multi">
+                    <label for="multi">Nhân</label><br>
+                    <input type="radio" id="devide" name="calc" value="devide">
+                    <label for="devide">Chia</label><br>
+               </form>
+           </div>
+           <button type="button" onclick="Calculation()">Tính</button>
+           <br>
+           <label for="result">Kết quả: </label><br>
+           <input type="text" id="result" name="result"><br>
+
+           <br>
+           <label for="news">Thông báo</label>
+           <p id="news"></p>
+       </div>
+
+       <script>
+           function Calculation() {
+            var num1 = document.getElementById("fnum").value;
+            var num2 = document.getElementById("snum").value; 
+
+            num1 = parseInt(num1);
+            num2 = parseInt(num2);
+
+            var result;
+
+            if(document.getElementById("add").checked){
+                result = num1 + num2;
+            }
+            else if (document.getElementById("sub").checked){
+                result = num1 - num2;
+            }
+            else if (document.getElementById("multi").checked){
+                result = num1 * num2;
+            }
+            else if(document.getElementById("devide").checked){
+                result = num1/num2;
+            }
+            
+            
+            
+
+            if(Number.isNaN(result))
+                document.getElementById("result").value = num2;
+            else
+                document.getElementById("result").value = num2;
+            
+            //document.getElementById("result").value = result;
+           }
+       </script>
+    </body>
+</html>
