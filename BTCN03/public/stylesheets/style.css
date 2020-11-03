@@ -1,0 +1,14 @@
+h1 {
+    font-family: 'Bangers', cursive;
+    text-align: center;
+    padding: 40px;
+    color: rgb(16, 77, 168);
+}
+.form-control.rounded-pill {
+    font-size: 14px;
+    min-height: 40px;
+}
+
+.btn.btn-outline-primary {
+    font-size: 18px;
+}

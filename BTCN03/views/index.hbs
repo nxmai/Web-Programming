@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BTCN02 - Javascript Basic</title>
+        <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+        <title>{{title}}</title>
+
+    </head>
+    <body>
+       <div class="container">
+          <form style="width: fit-content; margin: auto;" method="POST" onsubmit="return Calculation()">
+
+           <h1>BÉ TẬP TÍNH </h1>
+           <div class="row">
+               <div class="col-md-2"></div>
+               <div class="col-md-4">
+                    <label for="fnum">Số thứ nhất:</label><br>
+                    <input type="text" id="fnum" name="number1" class="form-control rounded-pill" placeholder="first number" value="{{number1}}" onfocusout=checkNumber(id)><br>
+               </div>
+               <div class="col-md-4">
+                    <label for="snum">Số thứ hai:</label><br>
+                    <input type="text" id="snum" name="number2" class="form-control rounded-pill" placeholder="second number" value="{{number2}}" onfocusout=checkNumber(id)><br>
+               </div>
+               <div class="col-md-2"></div>
+           </div>
+           <br>
+           <div class="row">
+                <div class="col-md-2"></div>
+                <div class = "col-md-4">
+                    <input type="radio" id="add" name="calc" value="+">
+                    <label for="add">Cộng</label><br>
+                    <input type="radio" id="sub" name="calc" value="-">
+                    <label for="sub">Trừ</label><br>
+                </div>
+                <div class = "col-md-4">
+                    <input type="radio" id="multi" name="calc" value="*">
+                    <label for="multi">Nhân</label><br>
+                    <input type="radio" id="devide" name="calc" value="/">
+                    <label for="devide">Chia</label><br>
+                </div>
+                <div class="col-md-2"></div>
+           </div>
+           <br>
+           <div class="row">
+                <div class="col-md-2"></div>
+                <div class = "col-md-8">
+                    <button class="btn btn-outline-primary form-control rounded-pill" type="submit" onfocusout= checkValid()>Tính</button>
+                </div>
+           </div>
+
+           <br>
+
+           <div class="row">
+                <div class="col-md-2"></div>
+                <div class = "col-md-8">
+                    <label for="result">Kết quả: </label><br>
+                    <input type="text" id="result" name="result" class="form-control rounded-pill" placeholder="result" value="{{result}}"><br>
+                </div>
+           </div>
+           
+           <br>
+           <div class="row">
+               <div class = "col-md-2"></div>
+               <div class ="col-md-3">
+                    <label for="noti">Thông báo:</label>
+               </div>
+               <div class="col-md-8">
+                    <p id="noti"></p>
+               </div>
+                    
+                
+           </div>
+           
+       </div>
+
+     </form>
+
+       <script>
+           function checkNumber(number){
+            var tnum1 = document.getElementById("fnum").value;
+            var tnum2 = document.getElementById("snum").value; 
+
+            num1 = parseInt(tnum1);
+            num2 = parseInt(tnum2);
+
+            if (Number.isNaN(num1) && Number.isNaN(num2) && tnum1!="" && tnum2!="" ){
+                noti.innerHTML = "Cả hai số không phải là số";
+                
+            }
+            else if(Number.isNaN(num1) && tnum1!=""){
+                noti.innerHTML = "Số thứ nhất không phải là số";
+                return false;
+            }
+            else if (Number.isNaN(num2) && tnum2!="") {
+                noti.innerHTML = "Số thứ hai không phải là số";
+                return false;
+            }
+            else {
+              noti.innerHTML="";
+              return true;
+            }
+           }
+
+           function checkValid(){
+            var num1 = document.getElementById("fnum").value;
+            var num2 = document.getElementById("snum").value; 
+
+            if (num1.length == 0 && num2.length == 0){
+                noti.innerHTML = "Chưa nhập cả hai số";
+                return false;
+            }
+            else if(num1.length == 0){
+               noti.innerHTML = "Chưa nhập số thứ nhất";
+               return false;
+            }
+            else if (num2.length == 0){
+                noti.innerHTML = "Chưa nhập số thứ hai";
+                return false;
+            }
+            else{
+              noti.innerHTML = "";
+              return true;
+            }
+           }
+
+           function Calculation() {
+            
+              var num1 = document.getElementById("fnum").value;
+            var num2 = document.getElementById("snum").value; 
+
+
+            num1 = parseInt(num1);
+            num2 = parseInt(num2);
+            
+
+
+            if(document.getElementById("add").checked){
+                return true;
+            }
+            else if (document.getElementById("sub").checked){
+                return true;
+            }
+            else if (document.getElementById("multi").checked){
+                return true;
+            }
+            else if(document.getElementById("devide").checked){
+                if(num2 == 0){
+                    noti.innerHTML = "Số không hợp lệ";
+                    return false;
+                } else{
+                  return true;
+                }
+            }
+            else {
+                noti.innerHTML = "Chưa chọn phép tính";
+                return false;
+            }
+           }
+       </script>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    </body>
+</html>
